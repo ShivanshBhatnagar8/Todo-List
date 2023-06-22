@@ -1,0 +1,276 @@
+/*
+--primary-button: #32a96c;
+--secondary-button: #06140d;
+--accent: #38bc78; */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #000000;
+  color: #fbfefc;
+}
+.container {
+  max-width: 120rem;
+}
+main {
+  display: grid;
+  grid-template-rows: repeat(4, min-content);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-areas:
+    "header header header header header header header header"
+    "aside aside  section section section section section section"
+    "aside aside  section section section section section section"
+    "aside aside section section section section section section";
+}
+header {
+  grid-area: header;
+  border-bottom: 2px solid #38bc78;
+  max-width: 120rem;
+  padding: 2rem 3.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+h1 {
+  background: linear-gradient(120deg, #32a96c, #22f17f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+header a {
+  padding: 1.6rem 1.6rem;
+  background-color: #32a96c;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+
+  &:hover {
+    background-color: #32a96cec;
+    box-shadow: 0px 0px 8px #32a96cec;
+  }
+}
+.add {
+  stroke: #fbfefc;
+  font-size: 1.4rem;
+  display: inline-block;
+}
+aside {
+  grid-area: aside;
+
+  border-right: 2px solid #38bc78;
+  padding: 1.6rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 2.4rem;
+}
+.button-list,
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.projects a {
+  display: flex;
+  justify-content: center;
+}
+.projects p {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.projects svg {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.projects form {
+  display: flex;
+  padding: 1rem 1rem;
+  gap: 1.4rem;
+  flex-direction: column;
+  overflow: hidden;
+  height: 0;
+  display: none;
+}
+.projects input {
+  padding: 1rem 1rem;
+  display: block;
+  border-radius: 0;
+}
+.project-btns {
+  display: flex;
+  justify-content: end;
+  gap: 1.2rem;
+}
+#project-submit {
+  padding: 1rem 1rem;
+  background-color: #22f17f;
+}
+.project-btns a {
+  font-size: 1.4rem;
+  background-color: red;
+  padding: 1rem 1rem;
+  display: inline-block;
+  text-decoration: none;
+  color: #000000;
+}
+.project-btns a:hover {
+  background-color: red;
+}
+aside h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+aside hr {
+  width: 100%;
+  border: 1px solid #32a96c;
+}
+aside a {
+  text-decoration: none;
+  display: flex;
+  gap: 1.4rem;
+  padding: 1.2rem 1.2rem;
+  box-shadow: 0px 0px 9px #1b1b1bce;
+  z-index: 2;
+}
+
+aside a:hover {
+  background-color: #38bc78;
+}
+aside p {
+  font-size: 2rem;
+  color: #fbfefc;
+  align-self: center;
+}
+aside svg {
+  stroke: #fbfefc;
+  width: 3.2rem;
+  height: 3.2rem;
+}
+.project-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.4rem 1.4rem;
+  background-color: #2a2a2a;
+}
+
+.delete-project {
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 0 0;
+}
+.delete-project:hover {
+  color: red;
+  background-color: #2a2a2a;
+}
+section {
+  grid-area: section;
+}
+.hidden {
+  opacity: 0;
+}
+.scale {
+  transform: scale(0.5);
+}
+.popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #656565f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup-content {
+  transition: all 0.2s;
+}
+#todo-form {
+  display: flex;
+  flex-direction: column;
+  padding: 2.6rem 2.6rem;
+  background-color: #195636;
+  border-radius: 2rem;
+  gap: 1.6rem;
+  position: relative;
+}
+.cancel-btn {
+  position: absolute;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffff;
+  font-size: 2.2rem;
+  right: 1rem;
+  top: 1rem;
+}
+.cancel-btn:hover {
+  color: red;
+}
+label {
+  font-size: 2.2rem;
+}
+input {
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  border: none;
+  padding: 1.6rem 1.6rem;
+}
+input:focus,
+select:focus {
+  outline: none;
+}
+
+.selection-section {
+  display: flex;
+  gap: 1.4rem;
+}
+.selection-section label {
+  align-self: center;
+}
+select {
+  display: inline-block;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  padding: 0.4rem;
+}
+#submit {
+  background-color: #000000;
+  color: #fff;
+}
+#submit:hover {
+  background-color: #fff;
+  color: #000000;
+}
+@keyframes slide-down {
+  0% {
+    visibility: hidden;
+    height: 0;
+  }
+
+  95% {
+    visibility: visible;
+    height: 25rem;
+  }
+
+  100% {
+    visibility: visible;
+    height: auto;
+  }
+}
+.slide-down {
+  animation: slide-down 0.3s linear both;
+}
