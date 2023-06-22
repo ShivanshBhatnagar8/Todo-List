@@ -1,5 +1,11 @@
 import { addTask, tasks } from "../model/class";
 import { gettingButtons } from "../model/elements";
+import {
+  creatingProjectList,
+  submitButtonFunctionality,
+  hideProjectFunctionality,
+  gettingProjectsFunctionality,
+} from "./eventFunction";
 
 // function submitForm() {
 //   const btns = gettingButtons().btnGrp;
@@ -48,58 +54,24 @@ import { gettingButtons } from "../model/elements";
 
 function gettingProjects() {
   const addProject = gettingButtons().addProjectButton;
-  const projectForm = gettingButtons().projectForm;
-  const projects = gettingButtons().projects;
   addProject.addEventListener("click", function () {
-    addProject.href = `#${projects.id}`;
-    projectForm.style.display = "flex";
-    projectForm.style.height = "auto";
-    projectForm.classList.remove("hidden");
-    projectForm.classList.add("slide-down");
+    gettingProjectsFunctionality();
   });
 }
 
 function hideProjectForm() {
-  const projectForm = gettingButtons().projectForm;
-  const projects = gettingButtons().projects;
   const cancelProject = gettingButtons().cancelProject;
   cancelProject.addEventListener("click", function () {
-    cancelProject.href = `#${projects.id}`;
-    projectForm.style.display = "none";
-    projectForm.style.height = 0;
-    projectForm.classList.add("hidden");
-    projectForm.classList.remove("slide-down");
+    hideProjectFunctionality();
   });
 }
 
 function creatingProject() {
-  const projects = gettingButtons().projects;
-  const projectForm = gettingButtons().projectForm;
   const submitProject = gettingButtons().submitProject;
   submitProject.addEventListener("click", function () {
-    submitProject.href = `#${projects.id}`;
-    projectForm.style.display = "none";
-    projectForm.style.height = 0;
-    projectForm.classList.add("hidden");
-    projectForm.classList.remove("slide-down");
+    submitButtonFunctionality();
     creatingProjectList();
   });
 }
 
-function creatingProjectList() {
-  const projects = gettingButtons().projects;
-  const projectInput = gettingButtons().projectInput;
-  const projectContainer = document.createElement("div");
-  projectContainer.classList.add("project-container");
-  const projectName = document.createElement("p");
-  const projectIcon = document.createElement("a");
-  projectName.textContent = projectInput.value;
-  projectIcon.innerHTML = `&Cross;`;
-  projectIcon.classList.add("delete-project");
-  projectContainer.append(projectName, projectIcon);
-  projects.append(projectContainer);
-  projectIcon.addEventListener("click", function (e) {
-    projects.removeChild(e.target.parentElement);
-  });
-}
 export { gettingProjects, hideProjectForm, creatingProject };
