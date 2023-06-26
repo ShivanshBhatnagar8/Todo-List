@@ -10,6 +10,7 @@ const creatingBase = (() => {
   const header = document.createElement("header");
   const aside = document.createElement("aside");
   const section = document.createElement("section");
+  section.classList.add("main-section");
   function creatingBaseElements() {
     body.append(main);
     main.append(header, aside, section);
@@ -99,8 +100,10 @@ const creatingBase = (() => {
     cancelProject.classList.add("cancel-project");
     projectBtns.append(addingProject, cancelProject);
     projectForm.append(projectInput, projectBtns);
+    const projectContainer = document.createElement("div");
+    projectContainer.classList.add("project-container");
 
-    projectBox.append(line, addProjectButton, projectForm);
+    projectBox.append(line, addProjectButton, projectForm, projectContainer);
   }
   function creatingPopUpForm() {
     const popup = document.createElement("div");
@@ -174,12 +177,24 @@ const creatingBase = (() => {
 
     body.appendChild(popup);
   }
+
+  function creatingMainSection() {
+    const mainContainer = document.createElement("div");
+    mainContainer.classList.add("main-container");
+    section.appendChild(mainContainer);
+    const h3 = document.createElement("h3");
+    const cardSection = document.createElement("div");
+    cardSection.classList.add("card-section");
+    mainContainer.append(h3, cardSection);
+  }
+
   function pageLoad() {
     creatingBaseElements();
     creatingHeaderElements();
     creatingPopUpForm();
     addingButtons();
     addingProjects();
+    creatingMainSection();
   }
   return {
     body,
