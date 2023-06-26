@@ -5,17 +5,15 @@ import {
   gettingProjects,
   hideProjectForm,
   creatingProject,
+  popUpFunctionality,
+  submitForm,
+  popupCloseFunctionality,
 } from "./assets/controller/eventListeners";
-// import {
-//   popUpFunctionality,
-//   submitForm,
-//   popupCloseFunctionality,
-// } from "./assets/controller/eventListeners";
+
 creatingBase.pageLoad();
 gettingProjects();
 hideProjectForm();
 creatingProject();
-
-// popUpFunctionality();
-// popupCloseFunctionality();
-// submitForm();
+popUpFunctionality();
+popupCloseFunctionality();
+submitForm();
