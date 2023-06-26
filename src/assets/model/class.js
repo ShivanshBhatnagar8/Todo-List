@@ -1,5 +1,25 @@
 import { creatingBase } from "../view/base";
 
+class Project {
+  constructor(name) {
+    this.name = name;
+  }
+  setName(name) {
+    return (this.name = name);
+  }
+
+  getName() {
+    return this.name;
+  }
+}
+
+function getProject(name) {
+  let project = new Project(name);
+  const getProjectName = project.getName();
+  const setProjectName = project.setName(name);
+  return { project, project, getProjectName, setProjectName };
+}
+
 class Todo {
   constructor(title, description, date, priority) {
     this.title = title;
@@ -32,21 +52,13 @@ class Todo {
     return (this.priority = priority);
   }
 }
-let tasks = [];
+let taskList = [];
 
-function addTask() {
-  let task = new Todo(
-    title.value,
-    description.value,
-    date.value,
-    priority.value
-  );
-  const taskTitle = task.getTitle();
-  const taskDescription = task.getDescription();
-  const taskDate = task.getDueDate();
-  const taskPriority = task.getPriority();
-  tasks.push(task);
-  return { task, tasks, taskTitle, taskDescription, taskDate, taskPriority };
+function addTask(title, description, date, priority) {
+  let task = new Todo(title, description, date, priority);
+
+  taskList.push(task);
+  return { task, taskList };
 }
 
-export { Todo, addTask, tasks };
+export { Todo, addTask, getProject, taskList };
