@@ -17,6 +17,14 @@ function gettingButtons() {
   const submitProject = document.getElementById("project-submit");
   const projectInput = document.getElementById("project-input");
   const cancelProject = document.querySelector(".cancel-project");
+  const section = document.querySelector(".main-section");
+  const mainContainer = document.querySelector(".main-container");
+  const mainHeading = document.querySelector("h3");
+  const cardSection = document.querySelector(".card-section");
+  const projectTitle = document.querySelectorAll(".project-name");
+  const projectContainer = document.querySelector(".project-container");
+  const projectListAll = document.querySelectorAll(".project-list");
+  const projectList = document.querySelector(".project-list");
 
   let btnGrp = [
     addBtn,
@@ -29,6 +37,7 @@ function gettingButtons() {
     submitProject,
     cancelProject,
   ];
+
   return {
     addBtn,
     popup,
@@ -47,6 +56,14 @@ function gettingButtons() {
     cancelProject,
     projectForm,
     projectInput,
+    projectContainer,
+    section,
+    mainContainer,
+    mainHeading,
+    projectTitle,
+    cardSection,
+    projectListAll,
+    projectList,
   };
 }
 
