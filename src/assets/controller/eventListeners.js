@@ -5,52 +5,34 @@ import {
   submitButtonFunctionality,
   hideProjectFunctionality,
   gettingProjectsFunctionality,
+  submitTodoForm,
+  addTodo,
+  hidingTodoForm,
+  creatingTodos,
 } from "./eventFunction";
 
-// function submitForm() {
-//   const btns = gettingButtons().btnGrp;
-//   const popupVisible = gettingButtons().popup;
-//   const popupContentVisible = gettingButtons().popupContent;
-//   const submit = gettingButtons().submitBtn;
-//   submit.addEventListener("click", function (e) {
-//     e.preventDefault();
-//     addTask();
-//     popupVisible.classList.add("hidden");
-//     popupContentVisible.classList.add("hidden", "scale");
-//     btns.forEach((el) => {
-//       el.style.zIndex = 2;
-//     });
-//   });
-// }
+function submitForm() {
+  const submit = gettingButtons().submitBtn;
+  submit.addEventListener("click", function (e) {
+    e.preventDefault();
+    submitTodoForm();
+    creatingTodos();
+  });
+}
 
-// function popUpFunctionality() {
-//   const btns = gettingButtons().btnGrp;
-//   const popupVisible = gettingButtons().popup;
-//   const popupContentVisible = gettingButtons().popupContent;
-//   const add = gettingButtons().addBtn;
-//   add.addEventListener("click", function () {
-//     popupVisible.classList.remove("hidden");
-//     popupContentVisible.classList.remove("hidden", "scale");
-//     btns.forEach((el) => {
-//       el.style.zIndex = 0;
-//     });
-//   });
-// }
+function popUpFunctionality() {
+  const add = gettingButtons().addBtn;
+  add.addEventListener("click", function () {
+    addTodo();
+  });
+}
 
-// function popupCloseFunctionality() {
-//   const btns = gettingButtons().btnGrp;
-//   const popupVisible = gettingButtons().popup;
-//   const popupContentVisible = gettingButtons().popupContent;
-//   const cancel = gettingButtons().cancelBtn;
-//   cancel.addEventListener("click", function () {
-//     popupVisible.classList.add("hidden");
-//     popupContentVisible.classList.add("hidden", "scale");
-//     btns.forEach((el) => {
-//       el.style.zIndex = 2;
-//     });
-//   });
-// }
-// export { popUpFunctionality, submitForm, popupCloseFunctionality };
+function popupCloseFunctionality() {
+  const cancel = gettingButtons().cancelBtn;
+  cancel.addEventListener("click", function () {
+    hidingTodoForm();
+  });
+}
 
 function gettingProjects() {
   const addProject = gettingButtons().addProjectButton;
@@ -74,4 +56,11 @@ function creatingProject() {
   });
 }
 
-export { gettingProjects, hideProjectForm, creatingProject };
+export {
+  gettingProjects,
+  hideProjectForm,
+  creatingProject,
+  popUpFunctionality,
+  submitForm,
+  popupCloseFunctionality,
+};
