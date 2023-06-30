@@ -1,4 +1,4 @@
-import { addTask, tasks } from "../model/class";
+import { addTask, getProject, tasks } from "../model/class";
 import { gettingButtons } from "../model/elements";
 import {
   creatingProjectList,
@@ -9,6 +9,7 @@ import {
   addTodo,
   hidingTodoForm,
   creatingTodos,
+  allTaskFunctionality,
 } from "./eventFunction";
 
 function submitForm() {
@@ -22,6 +23,7 @@ function submitForm() {
 
 function popUpFunctionality() {
   const add = gettingButtons().addBtn;
+
   add.addEventListener("click", function () {
     addTodo();
   });
@@ -55,7 +57,12 @@ function creatingProject() {
     creatingProjectList();
   });
 }
-
+function showingAllTasks() {
+  const allTaskbtn = gettingButtons().allTaskBtn;
+  allTaskbtn.addEventListener("click", function () {
+    allTaskFunctionality();
+  });
+}
 export {
   gettingProjects,
   hideProjectForm,
@@ -63,4 +70,5 @@ export {
   popUpFunctionality,
   submitForm,
   popupCloseFunctionality,
+  showingAllTasks,
 };
