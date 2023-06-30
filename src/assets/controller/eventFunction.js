@@ -1,5 +1,5 @@
 import { gettingButtons } from "../model/elements";
-import { getProject, Todo } from "../model/class";
+import { Project, Todo } from "../model/class";
 
 let projectHolder = [];
 
@@ -46,6 +46,8 @@ function submitButtonFunctionality() {
 /* This function creates the project list*/
 function creatingProjectList() {
   const projectInput = gettingButtons().projectInput;
+  let project = new Project(projectInput.value);
+  console.log(project);
   const mainSection = gettingButtons().section;
   const addBtn = gettingButtons().addBtn;
   const projectContainer = gettingButtons().projectContainer;
@@ -57,14 +59,14 @@ function creatingProjectList() {
   const projectName = document.createElement("p");
   const projectIcon = document.createElement("a");
   projectName.classList.add("project-name");
-  projectName.textContent = getProject(projectInput.value).getProjectName; //From a class
+  projectName.textContent = project.project; //From a class
   projectIcon.innerHTML = `&Cross;`;
   projectIcon.classList.add("delete-project");
   projectList.append(projectName, projectIcon);
   projectContainer.append(projectList);
 
   /** FOR LOCAL STORAGE */
-  projectHolder.push(projectContainer.innerHTML);
+  projectHolder.push(project);
   console.log(projectHolder);
   /**************************************** */
 
@@ -137,104 +139,7 @@ function creatingProjectList() {
       }
     }
   });
-  /*Setting local storage */
-  //localStorage.setItem("projectList", JSON.stringify(projectHolder));
 }
-
-/* This method to be called when we get local storage */
-
-// function forLocalStorage() {
-//   const projectInput = gettingButtons().projectInput;
-//   const mainSection = gettingButtons().section;
-//   const addBtn = gettingButtons().addBtn;
-//   const projectContainer = gettingButtons().projectContainer;
-//   const mainHeading = gettingButtons().mainHeading;
-//   const cardSection = gettingButtons().cardSection;
-//   const projectList = document.createElement("div");
-//   projectList.classList.add("project-list");
-//   projectList.style.zIndex = 2;
-//   const projectName = document.createElement("p");
-//   const projectIcon = document.createElement("a");
-//   projectName.classList.add("project-name");
-//   projectName.textContent = getProject(projectInput.value).getProjectName; //From a class
-//   projectIcon.innerHTML = `&Cross;`;
-//   projectIcon.classList.add("delete-project");
-//   projectList.append(projectName, projectIcon);
-//   const projectIcon1 = gettingButtons().projectIcon;
-//   /**************************************** */
-
-//   //Appending project on main section
-
-//   const projectListAll = gettingButtons().projectListAll;
-//   if (projectListAll.length === 1) {
-//     projectList.addEventListener("click", function (e) {
-//       addBtn.style.zIndex = 2;
-
-//       e.target.classList.add("active");
-//       if (e.target.classList.contains("active")) {
-//         mainHeading.textContent = e.target.childNodes[0].textContent;
-//       }
-//     });
-//   }
-//   //if we have more than one projects
-//   if (projectListAll.length > 1) {
-//     projectListAll.forEach((el) => {
-//       el.addEventListener("click", function (e) {
-//         addBtn.style.zIndex = 2;
-//         e.target.classList.add("active");
-
-//         if (e.target.classList.contains("active")) {
-//           mainHeading.textContent = e.target.childNodes[0].textContent;
-//         }
-
-//         let siblings = [...projectListAll].filter(
-//           (child) => child !== e.target
-//         );
-//         siblings.forEach((el) => el.classList.remove("active"));
-
-//         if (cardSection.childNodes.length !== 0) {
-//           cardSection.childNodes.forEach((el) => {
-//             if (el.dataset.value !== mainHeading.textContent) {
-//               el.style.display = "none";
-//             } else if (el.dataset.value === mainHeading.textContent) {
-//               el.style.display = "flex";
-//             }
-//           });
-//         }
-//       });
-//     });
-//     /*Setting Local Storage */
-
-//     addBtn.style.zIndex = 2;
-//   }
-//   /************************************************** */
-//   //This is to delete the particular project
-
-//   projectList.childNodes[1].addEventListener("click", function (e) {
-//     projectInput.value = "";
-//     e.stopPropagation();
-//     projectContainer.removeChild(e.target.parentElement);
-//     addBtn.style.zIndex = 0;
-//     if (cardSection) {
-//       let arr = Array.from(cardSection.childNodes).filter(
-//         (el) => el.dataset.value === e.target.previousElementSibling.textContent
-//       );
-//       for (let i = 0; i < arr.length; i++) {
-//         cardSection.removeChild(arr[i]);
-//       }
-//     }
-//     //Deleting project on the main section
-//     if (mainSection) {
-//       if (mainSection.childNodes.length !== 0) {
-//         if (mainHeading.textContent === projectName.textContent) {
-//           mainHeading.textContent = "";
-//           e.target.parentElement.classList.remove("active");
-//         }
-//       }
-//     }
-//   });
-// }
-
 /* ************************************************************************************ */
 
 function addTodo() {
@@ -341,7 +246,7 @@ function hidingTodoForm() {
     el.style.zIndex = 2;
   });
 }
-
+let taskList = [];
 function creatingTodos() {
   const mainHeading = gettingButtons().mainHeading;
   const cardSection = gettingButtons().cardSection;
@@ -355,6 +260,10 @@ function creatingTodos() {
     date.value,
     priority.value
   );
+  taskList.push(task);
+
+  /*Setting local storage */
+  // localStorage.setItem("projects", JSON.stringify(taskList));
   todoCard.dataset.value = task.project;
 
   cardSection.appendChild(todoCard);
@@ -436,15 +345,106 @@ function allTaskFunctionality() {
     todoCards.forEach((el) => (el.style.display = "flex"));
   }
 }
-
+let i = 0;
 /*  getting localStorage */
 // function test() {
-//   let data = localStorage.getItem("projectList");
-//   const projectContainer = gettingButtons().projectContainer;
+//   let data = localStorage.getItem("projects");
+
 //   if (data) {
+//     // const projectInput = gettingButtons().projectInput;
+//     // const mainSection = gettingButtons().section;
+//     // const addBtn = gettingButtons().addBtn;
+//     // const mainHeading = gettingButtons().mainHeading;
+//     // const cardSection = gettingButtons().cardSection;
+//     const projectContainer = gettingButtons().projectContainer;
 //     data = JSON.parse(data);
-//     projectContainer.innerHTML = `${data}`;
-//     forLocalStorage();
+//     console.dir(data);
+//     data.forEach((el) => console.log(el.project));
+//     const projectList = document.createElement("div");
+//     projectList.classList.add("project-list");
+//     projectList.style.zIndex = 2;
+//     const projectName = document.createElement("p");
+//     const projectIcon = document.createElement("a");
+//     projectName.classList.add("project-name");
+//     projectName.textContent = data[0].project;
+//     projectIcon.innerHTML = `&Cross;`;
+//     projectIcon.classList.add("delete-project");
+//     projectList.append(projectName, projectIcon);
+//     projectContainer.append(projectList);
+//     i++;
+//     /** FOR LOCAL STORAGE */
+
+//     /**************************************** */
+
+//     // Appending project on main section
+
+//     //   const projectListAll = gettingButtons().projectListAll;
+//     //   if (projectListAll.length === 1) {
+//     //     projectList.addEventListener("click", function (e) {
+//     //       addBtn.style.zIndex = 2;
+
+//     //       e.target.classList.add("active");
+//     //       if (e.target.classList.contains("active")) {
+//     //         mainHeading.textContent = e.target.childNodes[0].textContent;
+//     //       }
+//     //     });
+//     //   }
+//     //   //if we have more than one projects
+//     //   if (projectListAll.length > 1) {
+//     //     projectListAll.forEach((el) => {
+//     //       el.addEventListener("click", function (e) {
+//     //         addBtn.style.zIndex = 2;
+//     //         e.target.classList.add("active");
+
+//     //         if (e.target.classList.contains("active")) {
+//     //           mainHeading.textContent = e.target.childNodes[0].textContent;
+//     //         }
+
+//     //         let siblings = [...projectListAll].filter(
+//     //           (child) => child !== e.target
+//     //         );
+//     //         siblings.forEach((el) => el.classList.remove("active"));
+
+//     //         if (cardSection.childNodes.length !== 0) {
+//     //           cardSection.childNodes.forEach((el) => {
+//     //             if (el.dataset.value !== mainHeading.textContent) {
+//     //               el.style.display = "none";
+//     //             } else if (el.dataset.value === mainHeading.textContent) {
+//     //               el.style.display = "flex";
+//     //             }
+//     //           });
+//     //         }
+//     //       });
+//     //     });
+//     //     /*Setting Local Storage */
+
+//     //     addBtn.style.zIndex = 2;
+//     //   }
+//     //   /************************************************** */
+//     //   //This is to delete the particular project
+
+//     //   projectIcon.addEventListener("click", function (e) {
+//     //     projectInput.value = "";
+//     //     e.stopPropagation();
+//     //     projectContainer.removeChild(e.target.parentElement);
+//     //     addBtn.style.zIndex = 0;
+
+//     //     let arr = Array.from(cardSection.childNodes).filter(
+//     //       (el) => el.dataset.value === e.target.previousElementSibling.textContent
+//     //     );
+//     //     for (let i = 0; i < arr.length; i++) {
+//     //       cardSection.removeChild(arr[i]);
+//     //     }
+
+//     //     //Deleting project on the main section
+
+//     //     if (mainSection.childNodes.length !== 0) {
+//     //       if (mainHeading.textContent === projectName.textContent) {
+//     //         mainHeading.textContent = "";
+//     //         e.target.parentElement.classList.remove("active");
+//     //       }
+//     //     }
+//     //   });
 //   }
 // }
 /****************************************************************** */
