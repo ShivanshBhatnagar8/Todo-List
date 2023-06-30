@@ -67,7 +67,7 @@ header a {
 }
 aside {
   grid-area: aside;
-
+  height: 90vh;
   border-right: 2px solid #38bc78;
   padding: 1.6rem 1.2rem;
   display: flex;
@@ -191,6 +191,7 @@ section {
   flex-direction: column;
   gap: 3.2rem;
 }
+
 h3 {
   font-size: 3.2rem;
   font-weight: 700;
@@ -209,8 +210,53 @@ h3 {
   margin-top: 2rem;
   padding: 2.6rem 3rem;
   border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  position: relative;
+}
+.todo-card span {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #393939;
+}
+.todo-card p {
+  font-size: 1.6rem;
+}
+.task-event-container {
+  display: flex;
+  justify-content: space-between;
 }
 
+.task-btn {
+  text-decoration: none;
+  font-size: 1.8rem;
+  padding: 1.2rem 1.2rem;
+  background-color: rgb(255, 31, 31);
+  display: inline-block;
+  color: #000000;
+  z-index: 2;
+}
+.task-btn:hover {
+  background-color: rgb(253, 0, 0);
+}
+.task-icon-holder {
+  display: flex;
+  align-self: center;
+  gap: 1.6rem;
+}
+.task-priority,
+.task-delete {
+  stroke: white;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  display: inline-block;
+}
+.task-delete:hover {
+  stroke: red;
+}
 .hidden {
   opacity: 0;
 }
