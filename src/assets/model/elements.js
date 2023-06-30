@@ -8,10 +8,6 @@ function gettingButtons() {
   const submitBtn = document.getElementById("submit");
   const projects = document.querySelector(".projects");
   const allTaskBtn = document.querySelector(".btn-0");
-  const todayBtn = document.querySelector(".btn-1");
-  const dueDateBtn = document.querySelector(".btn-2");
-  const importantBtn = document.querySelector(".btn-3");
-  const completeBtn = document.querySelector(".btn-4");
   const addProjectButton = document.querySelector(".add-project");
   const projectForm = document.querySelector(".project-form");
   const submitProject = document.getElementById("project-submit");
@@ -25,14 +21,17 @@ function gettingButtons() {
   const projectContainer = document.querySelector(".project-container");
   const projectListAll = document.querySelectorAll(".project-list");
   const projectList = document.querySelector(".project-list");
-
+  const todoCard = document.querySelectorAll(".todo-card");
+  const projectIconAll = document.querySelectorAll(".delete-project");
+  const taskPriority = document.querySelector(".task-priority");
+  const taskDelete = document.querySelector(".task-delete");
+  const taskPriorityAll = document.querySelectorAll(".task-priority");
+  const taskDeleteAll = document.querySelectorAll(".task-delete");
+  const taskStatusBtnAll = document.querySelectorAll(".task-btn");
+  const projectIcon = document.querySelector("delete-project");
   let btnGrp = [
     addBtn,
     allTaskBtn,
-    todayBtn,
-    dueDateBtn,
-    importantBtn,
-    completeBtn,
     addProjectButton,
     submitProject,
     cancelProject,
@@ -46,10 +45,6 @@ function gettingButtons() {
     submitBtn,
     projects,
     allTaskBtn,
-    todayBtn,
-    dueDateBtn,
-    importantBtn,
-    completeBtn,
     btnGrp,
     addProjectButton,
     submitProject,
@@ -64,6 +59,14 @@ function gettingButtons() {
     cardSection,
     projectListAll,
     projectList,
+    todoCard,
+    projectIconAll,
+    taskPriority,
+    taskDelete,
+    taskPriorityAll,
+    taskDeleteAll,
+    taskStatusBtnAll,
+    projectIcon,
   };
 }
 
