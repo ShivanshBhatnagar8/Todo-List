@@ -13,13 +13,6 @@ class Project {
   }
 }
 
-function getProject(project) {
-  let projectName = new Project(project);
-  const getProjectName = projectName.getName();
-  const setProjectName = projectName.setName(project);
-  return { project, projectName, getProjectName, setProjectName };
-}
-
 class Todo extends Project {
   constructor(project, title, description, date, priority) {
     super(project);
@@ -53,13 +46,5 @@ class Todo extends Project {
     return (this.priority = priority);
   }
 }
-let taskList = [];
 
-function addTask(project, title, description, date, priority) {
-  let task = new Todo(project, title, description, date, priority);
-
-  taskList.push(task);
-  return { task };
-}
-
-export { Todo, addTask, getProject, taskList };
+export { Todo, Project };
