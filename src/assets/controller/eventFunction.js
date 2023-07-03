@@ -263,7 +263,7 @@ function creatingTodos() {
 
   projectHolder.forEach((el) => {
     if (el.project === task.project) {
-      projectHolder.push(task);
+      el.arr.push(task);
     }
   });
 
@@ -363,8 +363,9 @@ function test() {
     const projectContainer = gettingButtons().projectContainer;
     data = JSON.parse(data);
     console.log(data);
-    projectHolder.push(data);
+
     data.forEach((el) => {
+      projectHolder.push(el);
       console.log(el);
       const projectList = document.createElement("div");
       projectList.classList.add("project-list");
