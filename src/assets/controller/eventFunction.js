@@ -1,6 +1,7 @@
 import { gettingButtons } from "../model/elements";
 import { Project, Todo } from "../model/class";
 
+//Showcase the form to type Project Name
 function gettingProjectsFunctionality() {
   const addProject = gettingButtons().addProjectButton;
   const projectInput = gettingButtons().projectInput;
@@ -13,6 +14,7 @@ function gettingProjectsFunctionality() {
   projectForm.classList.add("slide-down");
   projectInput.value = "";
 }
+/*************************************************** */
 
 //Hiding the form functionality
 function hideProjectFunctionality() {
@@ -258,9 +260,13 @@ function creatingTodos() {
     date.value,
     priority.value
   );
+
   projectHolder.forEach((el) => {
-    el.arr.push(task);
+    if (el.project === task.project) {
+      projectHolder.push(task);
+    }
   });
+
   console.log(projectHolder);
   localStorage.setItem("projects", JSON.stringify(projectHolder));
   cardSection.appendChild(todoCard);
@@ -357,6 +363,7 @@ function test() {
     const projectContainer = gettingButtons().projectContainer;
     data = JSON.parse(data);
     console.log(data);
+    projectHolder.push(data);
     data.forEach((el) => {
       console.log(el);
       const projectList = document.createElement("div");
@@ -370,17 +377,10 @@ function test() {
       projectIcon.classList.add("delete-project");
       projectList.append(projectName, projectIcon);
       projectContainer.append(projectList);
-
-      /** FOR LOCAL STORAGE */
-
-      /**************************************** */
-
-      // Appending project on main section
-
-      //  b
     });
   }
 }
+
 /****************************************************************** */
 
 export {

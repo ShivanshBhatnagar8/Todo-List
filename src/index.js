@@ -11,7 +11,11 @@ import {
   showingAllTasks,
 } from "./assets/controller/eventListeners";
 // import { gettingButtons } from "./assets/model/elements";
-import { storingLocalStorage, test } from "./assets/controller/eventFunction";
+import {
+  creatingProjectList,
+  storingLocalStorage,
+  test,
+} from "./assets/controller/eventFunction";
 
 creatingBase.pageLoad();
 gettingProjects();
