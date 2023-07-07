@@ -28,7 +28,7 @@ function gettingButtons() {
   const taskPriorityAll = document.querySelectorAll(".task-priority");
   const taskDeleteAll = document.querySelectorAll(".task-delete");
   const taskStatusBtnAll = document.querySelectorAll(".task-btn");
-  const projectIcon = document.querySelector("delete-project");
+  const projectIcon = document.querySelector(".delete-project");
   let btnGrp = [
     addBtn,
     allTaskBtn,
