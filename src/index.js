@@ -9,13 +9,8 @@ import {
   submitForm,
   popupCloseFunctionality,
   showingAllTasks,
+  getLocalStorage,
 } from "./assets/controller/eventListeners";
-// import { gettingButtons } from "./assets/model/elements";
-import {
-  creatingProjectList,
-  storingLocalStorage,
-  test,
-} from "./assets/controller/eventFunction";
 
 creatingBase.pageLoad();
 gettingProjects();
@@ -25,5 +20,4 @@ popUpFunctionality();
 popupCloseFunctionality();
 submitForm();
 showingAllTasks();
-
-test();
+getLocalStorage();
