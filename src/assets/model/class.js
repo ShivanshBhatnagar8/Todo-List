@@ -1,16 +1,13 @@
-import { creatingBase } from "../view/base";
-
 class Project {
   constructor(project) {
     this.project = project;
   }
-  setName(project) {
-    return (this.project = project);
-  }
+}
 
-  getName() {
-    return this.project;
-  }
+function createProject(name, array) {
+  let project = new Project(name); //creating project object
+  project.taskList = []; // adding taskList array to store task later
+  array.push(project); //pushing project object in an array
 }
 
 class Todo extends Project {
@@ -21,30 +18,17 @@ class Todo extends Project {
     this.date = date;
     this.priority = priority;
   }
-  getTitle() {
-    return this.title;
-  }
-  setTitle(title) {
-    return (this.title = title);
-  }
-  getDescription() {
-    return this.description;
-  }
-  setDescription() {
-    return (this.description = description);
-  }
-  getDueDate() {
-    return this.date;
-  }
-  setDueDate(date) {
-    return (this.date = date);
-  }
-  getPriority() {
-    return this.priority;
-  }
-  setPriority(priority) {
-    return (this.priority = priority);
-  }
 }
 
-export { Todo, Project };
+function createTask(project, title, description, date, priority, array) {
+  let task = new Todo(project, title, description, date, priority);
+  array.forEach((el) => {
+    if (el.project === task.project) {
+      el.taskList.push(task);
+    }
+  });
+  localStorage.setItem("projects", JSON.stringify(array));
+  return { task };
+}
+
+export { Todo, Project, createTask, createProject };
